@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Happy waste</title>
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+</head>
+
+<body class="cont1">
+    <!-- <div>
+        <div id="clock"></div>
+        <div id="date"></div>
+        <div id="days"></div>
+    </div>
+    <div>
+        <div id="trash_address"></div>
+    </div>
+
+    <input type="text" id="trash_id" onchange="generateQRCode()">
+
+    <p id="qr-result">QR code:</p>
+    <canvas id="qr-code"></canvas>
+    <script>
+        var qr;
+        (function () {
+            qr = new QRious({
+                element: document.getElementById('qr-code'),
+                size: 200,
+                value: 'trash_link_here'
+            });
+        })();
+
+        function generateQRCode() {
+            var trash_id = document.getElementById("trash_id").value;
+            document.getElementById("qr-result").innerHTML = "QR code for " + trash_id + ":";
+            qr.set({
+                foreground: 'black',
+                size: 200,
+                value: trash_id
+            });
+        }
+    </script> -->
+
+    <div class="cloc">
+        <div id="clock"></div>
+        <div style="font-size: small;margin-bottom: 25;margin-left: 15;" class="cn4">Copyright 2021 Smart Waste
+            Segregator</div>
+    </div>
+    <div class="logo">
+        <div style="margin-top:20;height:135;width:135" class="logo"></div>
+    </div>
+    <div class="contai">
+        
+        <p class="cn1" id="qr-result">Scan here</p>
+        <canvas class="cn2" id="qr-code"></canvas>
+        <input class="cn3 textbox" type="text" id="trash_id" onchange="generateQRCode()"> 
+    </div>
+    <div class="logo">
+        <img style="margin-top:20;height:135;width:135" class="logo" src="green_side-removebg-preview.png"
+            alt="trash logo">
+    </div>
+
+
+
+</body>
+<script>
+   var qr;
+    (function () {
+        qr = new QRious({
+            element: document.getElementById('qr-code'),
+            size: 200,
+            background: 'transparent',
+            foreground: 'black',
+            size: 350,
+            value: 'trash_link_here'
+        });
+    })();
+</script>
+<footer>
+</footer>
+
+</html>

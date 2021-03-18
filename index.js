@@ -1,7 +1,6 @@
 //  geoFindMe();   //location finder 
 
 clock(); //clock includes date day am and pm/ 24 hr format 
-
 function clock() {
   let date = new Date();
   let hrs = date.getHours();
@@ -18,6 +17,7 @@ function clock() {
   //   hrs = hrs - 12;
   //   period = "PM";
   // }
+
   hrs = hrs < 10 ? `0${hrs}` : hrs;
   mns = mns < 10 ? `0${mns}` : mns;
   dates = dates < 10 ? ` 0${dates} ` : dates
@@ -26,10 +26,12 @@ function clock() {
   let today_date = `${dates} | ${months[date.getMonth()]}`;
   let today_day = `${day[date.getDay()]}`;
   document.getElementById("clock").innerText = time;
+
   // document.getElementById("date").innerText = today_date;
   // document.getElementById("days").innerText = today_day;
 
 }
+
 // ***LOCATION FINDER***
 
 function geoFindMe() {
@@ -54,7 +56,6 @@ function geoFindMe() {
 }
 
 function getLocation(latitude, longitude) {
-  // console.log("x="+x+"y="+y)
   fetch(`http://api.positionstack.com/v1/reverse?access_key=d999dbe272f477009f6e28fbe1a76e1a&query=${latitude},${longitude}&limit=1&output=json`)
     .then(res => res.json())
     .then(response => {
@@ -62,8 +63,6 @@ function getLocation(latitude, longitude) {
       var trash_address = response.data[0].label;
       document.getElementById("trash_address").innerText = trash_address
     })
-
-
 }
 
 function generateQRCode() {
@@ -73,19 +72,19 @@ function generateQRCode() {
     background: 'transparent',
     foreground: 'black',
     size: 350,
-    value: trash_id
+    value: 'https://smartwastesegregator.netlify.app/'
   });
-  var urlencoded = new URLSearchParams();
-  urlencoded.append("id", trash_id);
+  var searchParams = new URLSearchParams();
+  searchParams.append("id", trash_id);
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
   console.log('help')
-  var requestOptions = {
+  var req = {
     method: 'POST',
     headers: myHeaders,
-    body: urlencoded,
+    body: searchParams,
   };
-  fetch("https://helpsws.herokuapp.com/id", requestOptions)
+  fetch("https://helpsws.herokuapp.com/id", req)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));

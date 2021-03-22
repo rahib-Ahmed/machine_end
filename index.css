@@ -93,4 +93,12 @@
     padding-left:10px; 
     padding-right:10px; 
     } 
-
+.square {
+        pointer-events: none;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-color: cornflowerblue;
+        margin: 4px;
+        display: inline-block;
+      }

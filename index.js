@@ -1,16 +1,11 @@
-//  geoFindMe();   //location finder 
 
-window.onload = ()=>{
-  anime({
-    targets: '#qr-code',
-    autoplay: 'true',
-})
-}
-
+geoFindMe();
 clock();
- //clock includes date day am and pm/ 24 hr format 
 
- add_trash_data();
+// add_trash_data();
+//clock includes date day am and pm/ 24 hr format 
+
+
 function clock() {
   let date = new Date();
   let hrs = date.getHours();
@@ -71,9 +66,12 @@ function getLocation(latitude, longitude) {
     .then(response => {
       console.log("User's Location Info: ", response)
       var trash_address = response.data[0].label;
-      document.getElementById("trash_address").innerText = trash_address
+      var postal_code = response.data[0].postal_code;
+      document.getElementById("trash_address").innerText = trash_address + ", " + postal_code;
     })
 }
+
+
 
 function generateQRCode() {
   var trash_id = document.getElementById("trash_id").value;
@@ -82,7 +80,7 @@ function generateQRCode() {
     background: 'transparent',
     foreground: 'black',
     size: 350,
-    value: 'https://smartwastesegregator.netlify.app/'
+    value: 'https://smartwastesegregator.netlify.app/trashid=' + trash_id
   });
   var searchParams = new URLSearchParams();
   searchParams.append("id", trash_id);
@@ -99,7 +97,7 @@ function generateQRCode() {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-}
+}  
 
 function add_trash_data(){
 var SearchParams = new URLSearchParams()
@@ -117,5 +115,3 @@ fetch('https://helpsws.herokuapp.com/addGarbage',req)
 .then(result => console.log(result))
 .catch(error => console.log('error', error))
 }
-
-

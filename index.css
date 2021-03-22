@@ -1,4 +1,4 @@
-.cont1 {
+.container {
     background-color: #B1E6B9;
     display: flex;
     flex-direction: row;
@@ -9,7 +9,7 @@
     overflow-y: hidden ;
 }
 
-.cloc {
+.clock {
     /* background-color: blueviolet; */
     font-family: 'Merriweather', sans-serif;
     margin-left: 20;
@@ -36,7 +36,7 @@
     position: relative;
 } */
 
-.contai {
+.midcontainer {
     /* background-color: yellow; */
     order: 0;
     flex-wrap: nowrap;
@@ -93,12 +93,3 @@
     padding-left:10px; 
     padding-right:10px; 
     } 
-.square {
-        pointer-events: none;
-        position: relative;
-        width: 200px;
-        height: 200px;
-        background-color: cornflowerblue;
-        margin: 4px;
-        display: inline-block;
-      }

@@ -1,7 +1,16 @@
 //  geoFindMe();   //location finder 
 
-clock(); //clock includes date day am and pm/ 24 hr format 
-add_trash_data();
+window.onload = ()=>{
+  anime({
+    targets: '#qr-code',
+    autoplay: 'true',
+})
+}
+
+clock();
+ //clock includes date day am and pm/ 24 hr format 
+
+ add_trash_data();
 function clock() {
   let date = new Date();
   let hrs = date.getHours();
@@ -19,7 +28,7 @@ function clock() {
   //   period = "PM";
   // }
 
-  hrs = hrs < 10 ? `0${hrs}` : hrs;
+  hrs = hrs < 10 ? `0${hrs}` : hrs
   mns = mns < 10 ? `0${mns}` : mns;
   dates = dates < 10 ? ` 0${dates} ` : dates
   let time = `${hrs}:${mns}`;
@@ -73,23 +82,23 @@ function generateQRCode() {
     background: 'transparent',
     foreground: 'black',
     size: 350,
-    value: trash_id
+    value: 'https://smartwastesegregator.netlify.app/'
   });
   var searchParams = new URLSearchParams();
   searchParams.append("id", trash_id);
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
-  console.log('help')
+ 
   var req = {
     method: 'POST',
     headers: myHeaders,
     body: searchParams,
   };
+
   fetch("https://helpsws.herokuapp.com/id", req)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-
 }
 
 function add_trash_data(){
@@ -108,3 +117,5 @@ fetch('https://helpsws.herokuapp.com/addGarbage',req)
 .then(result => console.log(result))
 .catch(error => console.log('error', error))
 }
+
+

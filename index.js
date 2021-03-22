@@ -80,7 +80,7 @@ function generateQRCode() {
     background: 'transparent',
     foreground: 'black',
     size: 350,
-    value: 'https://smartwastesegregator.netlify.app/trashid=' + trash_id
+    value: 'https://smartwastesegregator.netlify.app/trashid=' + trash_id,
   });
   var searchParams = new URLSearchParams();
   searchParams.append("id", trash_id);

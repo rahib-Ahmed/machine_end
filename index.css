@@ -10,16 +10,14 @@
 }
 
 .clock {
-    /* background-color: blueviolet; */
+    background-color: blueviolet;
     font-family: 'Merriweather', sans-serif;
     margin-left: 20;
+    margin-top: 20;
     font-size: 55;
     font-weight: 1000;
     display:flex;
     color: #05431A;
-    height: auto;
-    width: auto;
-    order: 0;
     flex-wrap: nowrap;
     flex: 0 1 auto;
     align-self: stretch;
@@ -93,3 +91,8 @@
     padding-left:10px; 
     padding-right:10px; 
     } 
+.location{
+    display: flex,
+
+}
+

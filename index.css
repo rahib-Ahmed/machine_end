@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap%27');
+
+.basic{
+    color:#05431A;
+    font-family:'Amiko', sans-serif;
+}
+
+.merrie{
+    font-family: 'Merriweather', sans-serif;
+}
+
 .container {
     background-color: #B1E6B9;
     display: flex;
@@ -10,10 +21,9 @@
 }
 
 .clock {
-    background-color: blueviolet;
-    font-family: 'Merriweather', sans-serif;
+    /* background-color: blueviolet; */
     margin-left: 20;
-    margin-top: 20;
+    margin-top: 15;
     font-size: 55;
     font-weight: 1000;
     display:flex;
@@ -95,4 +105,5 @@
     display: flex,
 
 }
+
 

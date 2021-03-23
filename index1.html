@@ -5,10 +5,11 @@
     <script type="text/javascript" src="index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 </head>
-<body class="container">
+<body class="container basic">
     <!-- <div>
         <div id="clock"></div>
         <div id="date"></div>
@@ -42,10 +43,13 @@
             });
         }
     </script> -->
-    <div class="clock">
-        
-        <div id="clock"></div>
-        <div style="font-size: small;margin-bottom: 25;margin-left: 15;" class="cn4">Copyright 2021 Smart Waste
+   
+    <div style="font-size: 30px;" class="clock">
+        <div>
+            <div id="clock"></div>
+            <div id="date"></div>
+        </div>
+        <div style="font-size: small;margin-bottom: 25;margin-left: 15;">Copyright 2021 Smart Waste
             Segregator</div>
     </div>
     
@@ -77,7 +81,7 @@
         qr = new QRious({
             element: document.getElementById('qr-code'),
             background: 'transparent',
-            foreground: 'black',
+            foreground: '#05431A',
             size: 350,
             value: 'trash_link_here'
         });

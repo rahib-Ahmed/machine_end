@@ -126,8 +126,9 @@ function generateQRCode() {
 }  
 
 function add_trash_data(){
+  var trash_id = document.getElementById("trash_id").value;
 var SearchParams = new URLSearchParams()
-SearchParams.append("id", "1");
+SearchParams.append("id", trash_id);
 SearchParams.append("type", "plastic")
 var Header = new Headers();
 Header.append("Content-Type", "application/x-www-formurlencoded")

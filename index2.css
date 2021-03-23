@@ -45,17 +45,10 @@
 .ml10 .letter {
     display: inline-block;
     /* line-height: 1em; */
-    transform-origin: 0 0;
+    transform-origin: 50% 100%;
   }
 
-
-
 /* flex */
-
-
-
-
-
 .not {
   /* background-color: aqua; */
   order: 0;

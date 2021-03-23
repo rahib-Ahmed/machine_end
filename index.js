@@ -1,5 +1,26 @@
+function text_anime() {
+
+  var textWrapper = document.querySelector('.ml10 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  anime.timeline({
+          loop: false
+      })
+      .add({
+          targets: '.ml10 .letter',
+          rotateY: [-90, 0],
+          duration: 1300,
+          delay: (el, i) => 45 * i
+      }).add({
+          targets: '.ml10',
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+      });
+}
+
 
 geoFindMe();
+
 clock();
 
 // add_trash_data();
@@ -32,7 +53,7 @@ function clock() {
   let today_day = `${day[date.getDay()]}`;
   document.getElementById("clock").innerText = time;
 
-  // document.getElementById("date").innerText = today_date;
+  document.getElementById("date").innerText = today_date;
   // document.getElementById("days").innerText = today_day;
 
 }
@@ -67,20 +88,25 @@ function getLocation(latitude, longitude) {
       console.log("User's Location Info: ", response)
       var trash_address = response.data[0].label;
       var postal_code = response.data[0].postal_code;
-      document.getElementById("trash_address").innerText = trash_address + ", " + postal_code;
+      var add = trash_address.split(", ");
+      // var x = document.createElement("br")
+      
+      // console.log(x)
+      document.getElementById("trash_address").innerText = trash_address;
+      
+      text_anime()  
     })
+    
 }
-
-
 
 function generateQRCode() {
   var trash_id = document.getElementById("trash_id").value;
   document.getElementById("qr-result").innerHTML = "Scanned code for " + trash_id;
   qr.set({
     background: 'transparent',
-    foreground: 'black',
+    foreground: '#05431A',
     size: 350,
-    value: 'https://smartwastesegregator.netlify.app/trashid=' + trash_id,
+    value: 'https://smartwastesegregator.netlify.app/trashid='+trash_id,
   });
   var searchParams = new URLSearchParams();
   searchParams.append("id", trash_id);
@@ -114,4 +140,20 @@ fetch('https://helpsws.herokuapp.com/addGarbage',req)
 .then(res => res.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error))
+}
+
+
+function qr_change(){
+  var p= new URLSearchParams()
+  p.append("id", trash_id)
+  var q= new Headers()
+  q.append("Content-Type", "application/x-www-form-urlencoded")
+  var request={ 
+    method: 'POST',
+    headers: q,
+    body: p,
+  }
+  fetch("https://helpsws.herokuapp.com/scan", request)
+  .then(response => response.json())
+  .then(result=>(console.log(result)))
 }

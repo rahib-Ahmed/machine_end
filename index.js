@@ -106,8 +106,10 @@ function generateQRCode() {
     background: 'transparent',
     foreground: '#05431A',
     size: 350,
-    value: 'https://smartwastesegregator.netlify.app/trashid='+trash_id,
+    value: `https://smartwastesegregator.netlify.app/?trashid=${trash_id}`,
   });
+
+ 
   var searchParams = new URLSearchParams();
   searchParams.append("id", trash_id);
   var myHeaders = new Headers();
@@ -128,7 +130,7 @@ function generateQRCode() {
 function add_trash_data(){
   var trash_id = document.getElementById("trash_id").value;
 var SearchParams = new URLSearchParams()
-SearchParams.append("id", trash_id);
+SearchParams.append("id", "1");
 SearchParams.append("type", "plastic")
 var Header = new Headers();
 Header.append("Content-Type", "application/x-www-formurlencoded")

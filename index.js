@@ -21,7 +21,7 @@ function text_anime() {
 
 geoFindMe();
 
-// clock();
+clock();
 
 // add_trash_data();
 //clock includes date day am and pm/ 24 hr format 
@@ -101,7 +101,7 @@ function getLocation(latitude, longitude) {
 
 function generateQRCode() {
   var trash_id = document.getElementById("trash_id").value;
-  
+  qr_change(trash_id)
   document.getElementById("qr-result").innerHTML = "Scanned code for " + trash_id;
   qr.set({
     background: 'transparent',
@@ -126,11 +126,12 @@ function generateQRCode() {
     .then(response => 
       {
       response.json()
-      qr_change(trash_id)
+      
       }
       )
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
+ 
 }  
 
 function add_trash_data(){
@@ -163,7 +164,10 @@ function qr_change(id){
     body: p,
   }
   fetch("https://helpsws.herokuapp.com/scan", request)
-  .then(window.location.replace('file:///C:/Users/rahib/Desktop/machine_end/index2.html'))
+  .then(response=>{
+    // console.log(response.json());
+    window.location.replace('./index2.html');
+  })
   .then(result=>(console.log(result)))
 
 }

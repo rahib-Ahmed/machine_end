@@ -117,6 +117,7 @@ function generateQRCode() {
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
  
   var req = {
+    mode: 'no-cors',
     method: 'POST',
     headers: myHeaders,
     body: searchParams,
@@ -142,6 +143,7 @@ SearchParams.append("type", "plastic")
 var Header = new Headers();
 Header.append("Content-Type", "application/x-www-formurlencoded")
 var req = {
+  mode: 'no-cors',
   method: 'POST',
   header: Header,
   body: SearchParams
@@ -159,6 +161,7 @@ function qr_change(id){
   var q= new Headers()
   q.append("Content-Type", "application/x-www-form-urlencoded")
   var request={ 
+    mode: 'no-cors',
     method: 'POST',
     headers: q,
     body: p,

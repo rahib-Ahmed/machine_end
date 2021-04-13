@@ -1,16 +1,18 @@
 <html>
+
 <head>
     <title>Happy waste</title>
     <script src="anime.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="index1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="index1.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 </head>
+
 <body class="container basic">
-   
+
     <div style="font-size: 30px;" class="clock">
         <div>
             <div id="clock"></div>
@@ -19,31 +21,32 @@
         <div style="font-size: small;margin-bottom: 25;margin-left: 15;">Copyright 2021 Smart Waste
             Segregator</div>
     </div>
-    
+
     <div class="logo">
         <div style="margin-top:20;height:135;width:135" class="logo"></div>
     </div>
 
     <div class="midcontainer">
-        
+
         <p class="cn1" id="qr-result">Scan here</p>
-        
+
         <canvas class="cn2" id="qr-code"></canvas>
-        
-        <input class="cn3 textbox" type="number" id="trash_id" onchange="generateQRCode()"> 
+
+        <input class="cn3 textbox" type="number" id="trash_id" onchange="generateQRCode()">
+       
     </div>
 
     <div class="logo">
         <img style="margin-top:20;height:135;width:135" class="logo" src="green_side-removebg-preview.png"
             alt="trash logo">
     </div>
-   
-    
 
-    
+
+
+
 </body>
 <script>
-   var qr;
+    var qr;
     (function () {
         qr = new QRious({
             element: document.getElementById('qr-code'),
@@ -53,6 +56,7 @@
             value: 'trash_link_here'
         });
     })();
+    clock()
 </script>
 <footer>
 </footer>

@@ -1,29 +1,159 @@
-<!DOCTYPE html>
-<head> 
-    <script src="anime.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="index2.css">
-    <script type="text/javascript" src="index.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap" rel="stylesheet">
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Happy waste</title>
+	<link rel="stylesheet" type="text/css" href="Index2.css">
+	<script type="text/javascript" src="Index2.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap" rel="stylesheet">
+	<script src="progressbar.min.js"></script>
+	<script src="progressbar.js"></script>
 </head>
-<body class="container basic">
-    <div style="font-size: 30px;" class="clock">
-        <div>
-            <div id="clock"></div>
-            <div id="date"></div>
-        </div>
-      
-    </div>
 
-    <div class="not">
-   
-    </div>
-    <div class="utilities">
-        <h1 class="ml10">
-            <span class="text-wrapper">
-              <span class="letters text_location" id="trash_address"></span>
-            </span>
-          </h1>
-    </div>
+<body class="basic">
+	<div class="flex">
+		<div class="cn1">
+			<div id="clock"></div>
+			<div id="date"></div>
+			<div id="days"></div>
+		</div>
+		<div>
+			<div class="cn2" id="trash_address1"></div>
+			<div class="cn2" id="trash_address2"></div>
+			<!-- <div class="cn2" id="trash_address3"></div> -->
+		</div>
+	</div>
 
+	<div class="cn5">
+		<!-- progressbar -->
+		<div id="container">
+		</div>
+		<!-- pie chart -->
+		<div style="overflow-x: hidden; display: flex; justify-content: center; align-items: center;">
+			<div style="width: 570px; display: flex; justify-content: center;  overflow-x: hidden;">
+				<div id="chartContainer" style="height: 500px; width: 800px; margin-left: -80px; margin-right: -80px;">
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="cn3">
+			<button style=" border-radius: 15px;" onclick="add_trash_data('paper')" id="button" type="submit"><img
+					style=" height: 35px;" src="Icons/paper-recycle.png"></button>
+			<button style=" border-radius: 15px;" onclick="add_trash_data('plastic')" id="button" type="submit"><img
+					style=" height: 35px;" src="Icons/plastic.png"></button>
+			<button style=" border-radius: 15px;" onclick="add_trash_data('glass')" id="button" type="submit"><img
+					style=" height: 35px;" src="Icons/broken-bottle.png"></button>
+			<button style=" border-radius: 15px;" onclick="add_trash_data('bio')" id="button" type="submit"><img
+					style=" height: 35px;" src="Icons/apple.png"></button>
+			<button style=" border-radius: 15px;" onclick="add_trash_data('metal')" id="button" type="submit"><img
+					style=" height: 35px;" src="Icons/soft-drink.png"></button>
+		</div>
+	</div>
+	<br>
+	<div class="cn4">
+		<div class="slideshow-container">
+			<div class="mySlides fade">
+				Agriculture uses up 70% of our global freshwater. It goes up to 90% in fast developing countries.
+			</div>
+			<div class="mySlides fade">
+				We have already destroyed 27% of our coral reefs which is home to 25% of our marine life.
+			</div>
+			<div class="mySlides fade">
+				Plastic is Forever. It doesn’t bio-grade and go back to nature. It photo-degrades into smaller pieces of
+				itself,continually polluting the environment throughout its life cycle.
+			</div>
+			<div class="mySlides fade">
+				25% of the bottled water you buy is really municipal tap water.
+			</div>
+			<div class="mySlides fade">
+				Humans and elephants are the only animals with chins.
+			</div>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+		</div>
+		<div>
+		</div>
+	</div>
+	<script>
+		//progress bar//
+		var bar = new ProgressBar.Line(container, {
+			strokeWidth: 6,
+			easing: 'easeInOut',
+			duration: 1400,
+			color: 'white',
+			trailColor: '#eee',
+			trailWidth: 1,
+			svgStyle: {
+				width: '500%',
+				height: '20%'
+			},
+			text: {
+				style: {
+					// Text color.
+					// Default: same as stroke color (options.color)
+					color: '#B1E6B9',
+					position: 'absolute',
+					right: '0',
+					top: '0',
+					padding: 0,
+					margin: 0,
+					transform: 'rotate(-90deg)'
+				},
+				autoStyleContainer: false
+			},
+			from: {
+				color: '#FFEA82'
+			},
+			to: {
+				color: '#ED6A5A'
+			},
+			step: (state, bar) => {
+				if(Math.round(bar.value() * -100)<100){
+					bar.setText(Math.round(' '+ bar.value() * -100)+' ')
+				}
+				else{
+					bar.setText(Math.round(' '+ bar.value() * -100) +' '+' % ');
+				}
+				
+			}
+		});
+
+		bar.animate(-1.0);
+	</script>
+	<script>
+		//carousel script//
+
+		var slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > slides.length) {
+				slideIndex = 1
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex - 1].style.display = "block";
+			dots[slideIndex - 1].className += " active";
+			setTimeout(showSlides, 6000); // Change image every 2 seconds
+		}
+	</script>
+	<script src="canvasjs.min.js"></script>
 </body>
+
 </html>

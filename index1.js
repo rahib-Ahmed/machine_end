@@ -1,4 +1,4 @@
-generateQRCode()
+
 
 function clock() {
   let date = new Date();
@@ -40,18 +40,14 @@ function generateQRCode() {
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
  
   var req = {
-    mode: 'no-cors',
     method: 'POST',
     headers: myHeaders,
     body: searchParams,
   };
-
+  console.log(req)
   fetch("https://helpsws.herokuapp.com/id", req)
     .then(response => 
-      {
-      response.json()
-      
-      }
+      response.json() 
       )
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -71,7 +67,7 @@ function qr_change(id){
   }
   fetch("https://helpsws.herokuapp.com/scan", request)
   .then(response=>{
-    // console.log(response.json());
+    console.log(response.json());
     window.location.replace('./index2.html');
   })
   .then(result=>(console.log(result)))

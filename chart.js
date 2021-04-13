@@ -1,6 +1,6 @@
 var chart;
 window.onload = function () {
-
+ 
     var searchParams = new URLSearchParams();
     searchParams.append("id", "1");
     var myHeaders = new Headers();

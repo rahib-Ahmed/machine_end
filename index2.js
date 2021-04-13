@@ -75,8 +75,30 @@ function add_trash_data(x) {
   }
   fetch('https://helpsws.herokuapp.com/addGarbage', req)
     .then(res => res.text())
-    .then(result => {console.log(result) 
-    chart()})
+    .then(result => {
+      console.log(result)
+      var full = new URLSearchParams()
+      full.append("id", id)
+      var rep = {
+        method: 'POST',
+        header: Header,
+        body: full
+      }
+      fetch('https://helpsws.herokuapp.com/id', rep)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result)
+        const isfull = result.isFull
+
+        if(isfull==true){
+       alert('Trash bin is full')
+      }
+      })
+      
+    chart()
+    getProgress()
+  
+  })
     .catch(error => console.log('error', error))
 }
 
@@ -97,6 +119,8 @@ function chart() {
     .then(response => response.json())
     .then(
       (result) => {
+      
+        console.log(result)
         var plastic = result.plasticPercentage
         var bio = result.bioPercentage
         var glass = result.glassPercentage

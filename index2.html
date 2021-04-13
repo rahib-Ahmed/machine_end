@@ -39,6 +39,7 @@
 			</div>
 		</div>
 		
+		
 		<div class="cn3">
 			<button style=" border-radius: 15px;" onclick="add_trash_data('paper')" id="button" type="submit"><img
 					style=" height: 35px;" src="Icons/paper-recycle.png"></button>
@@ -83,26 +84,49 @@
 		</div>
 	</div>
 	<script>
+		getProgress()
+		function getProgress(){
+			console.log('inProgress')
+		var id = localStorage.getItem('id')
+	var storagePercentage = new URLSearchParams()
+	storagePercentage.append("id", id)
+	var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded")
+      var rep = {
+        method: 'POST',
+        header: myHeaders,
+        body: storagePercentage
+      }
+      fetch('https://helpsws.herokuapp.com/id', rep)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result)
+        const emptyPercentage = result.emptyPercentage;
+		const full = (100 - emptyPercentage) / 100
+		bar.animate(-full);
+      })}
 		//progress bar//
 		var bar = new ProgressBar.Line(container, {
 			strokeWidth: 6,
 			easing: 'easeInOut',
 			duration: 1400,
 			color: 'white',
-			trailColor: '#eee',
-			trailWidth: 1,
+			trailColor: 'black',
+			trailWidth: 0,
 			svgStyle: {
-				width: '500%',
+				width: '100%',
 				height: '20%'
 			},
 			text: {
+			
 				style: {
 					// Text color.
 					// Default: same as stroke color (options.color)
 					color: '#B1E6B9',
 					position: 'absolute',
-					right: '0',
-					top: '0',
+					right: '40%',
+					top: '4.5%',
+					// left: '0',
 					padding: 0,
 					margin: 0,
 					transform: 'rotate(-90deg)'
@@ -110,23 +134,18 @@
 				autoStyleContainer: false
 			},
 			from: {
-				color: '#FFEA82'
+				color: '#000'
 			},
 			to: {
-				color: '#ED6A5A'
+				color: '#444'
 			},
 			step: (state, bar) => {
-				if(Math.round(bar.value() * -100)<100){
-					bar.setText(Math.round(' '+ bar.value() * -100)+' ')
-				}
-				else{
-					bar.setText(Math.round(' '+ bar.value() * -100) +' '+' % ');
-				}
 				
-			}
+				bar.setText(Math.round(bar.value() * -100)+ '%' )
+				}
 		});
 
-		bar.animate(-1.0);
+		
 	</script>
 	<script>
 		//carousel script//

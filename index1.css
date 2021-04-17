@@ -86,6 +86,10 @@
 
 .logo {
     /* background-color: yellowgreen; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
     order: 0;
     flex: 0 0 auto;
     align-self: baseline;
@@ -106,4 +110,7 @@
 
 }
 
-
+.data {
+    display: grid;
+    align-self: flex-end;
+}

@@ -4,7 +4,9 @@
 <head>
 	<title>Happy waste</title>
 	<link rel="stylesheet" type="text/css" href="Index2.css">
+	<link rel="stylesheet" type="text/css" href="button.css">
 	<script type="text/javascript" src="Index2.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Amiko:wght@600&display=swap" rel="stylesheet">
@@ -64,7 +66,7 @@
 			</div>
 			<div class="mySlides fade">
 				Plastic is Forever. It doesn’t bio-grade and go back to nature. It photo-degrades into smaller pieces of
-				itself,continually polluting the environment throughout its life cycle.
+				itself.
 			</div>
 			<div class="mySlides fade">
 				25% of the bottled water you buy is really municipal tap water.
@@ -75,14 +77,19 @@
 		</div>
 		<br>
 
-		<div style="text-align:center">
+ <div style="text-align:center">
 			<span class="dot"></span>
 			<span class="dot"></span>
 			<span class="dot"></span>
 		</div>
 		<div>
 		</div>
+		
 	</div>
+	<div class="data">
+		<button style="font-size: 0.8rem; font-weight: 500;" class="big-button" onclick="dataRedirect()">Data</button>
+	</div>
+    
 	<script>
 		getProgress()
 		function getProgress(){
@@ -111,7 +118,7 @@
 			easing: 'easeInOut',
 			duration: 1400,
 			color: 'white',
-			trailColor: 'black',
+			trailColor: '#6B9060',
 			trailWidth: 0,
 			svgStyle: {
 				width: '100%',

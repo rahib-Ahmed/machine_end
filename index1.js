@@ -74,4 +74,6 @@ function qr_change(id){
 
 }
 
-
+function dataRedirect() {
+  window.location.replace('./index2.html')
+}

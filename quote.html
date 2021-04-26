@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 
 <head>
-
+    <script type="text/javascript" src="index1.js"></script>
 </head>
 
 <body>
-<input type="text" value="quotes" placeholder="quotes" />
-<input type="text" value="quotes" placeholder="facts" />
+    <form > 
+        <legend>Quotes</legend>
+<input id="quotes" type="text" value="" placeholder="quotes" />
+<legend>Facts</legend>
+<input id="facts" type="text" value="" placeholder="facts" />
+<input type="button" value="Submit" onclick="addQuFa()" />
+</form>
 </body> 
+
+<script>
+    
+function addQuFa() {
+  
+  var quotes = document.getElementById("quotes").value;
+  var facts = document.getElementById("facts").value;
+  var sentence;
+  var value;
+  if(quotes=="") {
+    value="fact"
+    sentence=facts  
+  }
+  else {
+    value = "quote"
+    sentence = quotes
+  }
+var p= new URLSearchParams()
+  p.append("type", value)
+  p.append("sentence", sentence)
+  var q= new Headers()
+  q.append("Content-Type", "application/x-www-form-urlencoded")
+  var request={ 
+    mode: 'no-cors',
+    method: 'POST',
+    headers: q,
+    body: p,
+  }
+  
+}
+</script>
 
 </html>

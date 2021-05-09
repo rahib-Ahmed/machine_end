@@ -28,4 +28,4 @@ There are lots of trash cans available which detect information of how a trash r
 2. On the second screen there will be **no** add button for specific materials they will be scanned by the machine itself and will be updated in the database. 
 
 * Tasks still need to be done 
-1. [] A dynamic end session on the screen when user end their session from the mobile app.
+1. [ ] A dynamic end session on the screen when user end their session from the mobile app.
